@@ -35,6 +35,12 @@
     }
   }
 
+  function trackLead() {
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "Lead");
+    }
+  }
+
   function setupFadeIn() {
     const fadeItems = document.querySelectorAll(".fade-in");
     if (!fadeItems.length) return;
@@ -102,6 +108,7 @@
         successMessage.classList.add("show");
         return;
       }
+      trackLead();
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your message has been sent." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2200);
@@ -200,6 +207,7 @@
         successMessage.classList.add("show");
         return;
       }
+      trackLead();
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your creator details have been submitted." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2400);
@@ -294,6 +302,7 @@
         successMessage.classList.add("show");
         return;
       }
+      trackLead();
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your business details have been submitted." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2400);
