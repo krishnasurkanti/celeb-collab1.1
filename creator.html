@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CelebColab | Creator Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="creator" data-google-script-url="https://script.google.com/macros/s/AKfycbzzB5gvfsj7cbjh-zQA8jCLfJzkb56uro6FvjghoKk7NKiBPf0gKdEs2j4VGj9We8Hz/exec">
+  <div class="page-wrap">
+    <div class="top-actions">
+      <a class="nav-button" href="index.html">Home</a>
+      <a class="nav-button" href="business.html">Business Form</a>
+    </div>
+    <div class="card form-page-card">
+      <img class="logo" src="celebcolab-top-logo.png" alt="CelebColab">
+      <div class="header"><h1>Get brand collaborations</h1><p>Fill the form and submit directly.</p></div>
+      <form novalidate id="creator-form">
+        <div class="field"><label for="creator-name">Name</label><input id="creator-name" name="name" type="text" placeholder="Your name" required><small class="error-text"></small></div>
+        <div class="field" id="platform-field"><label>Platform</label><div class="checkbox-grid"><label class="check-option" for="platform-instagram"><input id="platform-instagram" type="checkbox" name="platforms" value="instagram"><span>Instagram</span></label><label class="check-option" for="platform-youtube"><input id="platform-youtube" type="checkbox" name="platforms" value="youtube"><span>YouTube</span></label><label class="check-option" for="platform-facebook"><input id="platform-facebook" type="checkbox" name="platforms" value="facebook"><span>Facebook</span></label><label class="check-option" for="platform-others"><input id="platform-others" type="checkbox" name="platforms" value="others"><span>Others</span></label></div><small class="error-text"></small></div>
+        <div class="platform-details">
+          <div class="platform-card" data-platform-card="instagram"><h3>Instagram Details</h3><div class="field"><label for="instagram-username">Instagram Username</label><input id="instagram-username" name="instagramUsername" type="text" placeholder="@username" data-platform-required="instagram"><small class="error-text"></small></div><div class="field"><label for="instagram-link">Instagram Profile Link</label><input id="instagram-link" name="instagramLink" type="text" placeholder="Instagram profile link" data-platform-required="instagram"><small class="error-text"></small></div></div>
+          <div class="platform-card" data-platform-card="youtube"><h3>YouTube Details</h3><div class="field"><label for="youtube-name">YouTube Channel Name</label><input id="youtube-name" name="youtubeName" type="text" placeholder="Your YouTube channel name" data-platform-required="youtube"><small class="error-text"></small></div><div class="field"><label for="youtube-link">YouTube Channel Link</label><input id="youtube-link" name="youtubeLink" type="text" placeholder="YouTube channel link" data-platform-required="youtube"><small class="error-text"></small></div></div>
+          <div class="platform-card" data-platform-card="facebook"><h3>Facebook Details</h3><div class="field"><label for="facebook-username">Facebook Username</label><input id="facebook-username" name="facebookUsername" type="text" placeholder="Facebook username" data-platform-required="facebook"><small class="error-text"></small></div><div class="field"><label for="facebook-link">Facebook Profile/Page Link</label><input id="facebook-link" name="facebookLink" type="text" placeholder="Facebook profile or page link" data-platform-required="facebook"><small class="error-text"></small></div></div>
+          <div class="platform-card" data-platform-card="others"><h3>Others Details</h3><div class="field"><label for="other-platform-name">Platform Name</label><input id="other-platform-name" name="otherPlatformName" type="text" placeholder="Enter platform name" data-platform-required="others"><small class="error-text"></small></div><div class="field"><label for="other-platform-link">Profile Link</label><input id="other-platform-link" name="otherPlatformLink" type="text" placeholder="Profile link" data-platform-required="others"><small class="error-text"></small></div></div>
+        </div>
+        <div class="field"><label for="creator-email">Email</label><input id="creator-email" name="email" type="email" placeholder="name@example.com" required><small class="error-text"></small></div>
+        <div class="field"><label for="creator-phone">Phone <span style="color: var(--muted); font-weight: 500;">Optional</span></label><input id="creator-phone" name="phone" type="tel" placeholder="Your phone number"><small class="error-text"></small></div>
+        <div class="field"><label for="creator-category">Niche</label><input id="creator-category" name="category" type="text" placeholder="Fashion, Fitness, Tech, Food, etc." required><small class="error-text"></small></div>
+        <div class="field"><label for="creator-followers">Followers</label><input id="creator-followers" name="followers" type="text" placeholder="1K, 5K, 1000, 25000" required><small class="error-text"></small></div>
+        <div class="field"><label for="creator-rate">Rate per post or reel <span style="color: var(--muted); font-weight: 500;">Optional</span></label><input id="creator-rate" name="rate" type="text" placeholder="Your price per post or reel"><small class="error-text"></small></div>
+        <button class="submit-button" type="submit">Submit creator form</button>
+        <div class="success-message" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

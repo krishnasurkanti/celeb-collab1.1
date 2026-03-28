@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CelebColab | Business Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="business" data-google-script-url="https://script.google.com/macros/s/AKfycbzzB5gvfsj7cbjh-zQA8jCLfJzkb56uro6FvjghoKk7NKiBPf0gKdEs2j4VGj9We8Hz/exec">
+  <div class="page-wrap">
+    <div class="top-actions">
+      <a class="nav-button" href="index.html">Home</a>
+      <a class="nav-button" href="creator.html">Creator Form</a>
+    </div>
+    <div class="card form-page-card">
+      <img class="logo" src="celebcolab-top-logo.png" alt="CelebColab">
+      <div class="header"><h1>Grow your business</h1><p>Fill the form and submit directly.</p></div>
+      <form novalidate id="business-form">
+        <div class="field"><label for="business-name">Name</label><input id="business-name" name="name" type="text" placeholder="Your name" required><small class="error-text"></small></div>
+        <div class="field"><label for="business-brand">Business Name</label><input id="business-brand" name="businessName" type="text" placeholder="Your business name" required><small class="error-text"></small></div>
+        <div class="field" id="business-service-field"><label>What do you need?</label><div class="radio-group"><label class="radio-option" for="service-influencer"><input id="service-influencer" type="radio" name="businessService" value="influencer"><span>Influencer Marketing</span></label><label class="radio-option" for="service-leads"><input id="service-leads" type="radio" name="businessService" value="lead-generation"><span>Lead Generation (Meta Ads)</span></label><label class="radio-option" for="service-social"><input id="service-social" type="radio" name="businessService" value="social-handling"><span>Social Media Handling</span></label></div><small class="error-text"></small></div>
+        <div id="business-influencer-fields">
+          <div class="field"><label for="business-platform">Platform</label><select id="business-platform" name="platform" data-business-influencer-required><option value="">Select platform</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="facebook">Facebook</option></select><small class="error-text"></small></div>
+          <div class="field"><label for="business-budget">Budget <span style="color: var(--muted); font-weight: 500;">Optional</span></label><input id="business-budget" name="budget" type="text" placeholder="Your budget"><small class="error-text"></small></div>
+          <div class="field"><label for="business-influencers">Number of influencers needed</label><input id="business-influencers" name="influencerCount" type="text" placeholder="How many influencers?" data-business-influencer-required><small class="error-text"></small></div>
+          <div class="field"><label for="business-niche">Niche</label><input id="business-niche" name="niche" type="text" placeholder="Fashion, Food, Tech..." data-business-influencer-required><small class="error-text"></small></div>
+          <div class="field"><label for="business-followers">Preferred follower range <span style="color: var(--muted); font-weight: 500;">Optional</span></label><input id="business-followers" name="preferredFollowers" type="text" placeholder="5K-10K, 50K+, etc."><small class="error-text"></small></div>
+        </div>
+        <div class="field"><label for="business-email">Email</label><input id="business-email" name="email" type="email" placeholder="name@business.com" required><small class="error-text"></small></div>
+        <div class="field"><label for="business-phone">Phone <span style="color: var(--muted); font-weight: 500;">Optional</span></label><input id="business-phone" name="phone" type="tel" placeholder="Your phone number"><small class="error-text"></small></div>
+        <button class="submit-button" type="submit">Submit business form</button>
+        <div class="success-message" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
