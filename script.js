@@ -41,6 +41,17 @@
     }
   }
 
+  function fireLeadEventOnce(form) {
+    if (form.dataset.leadTracked === "true") {
+      return Promise.resolve();
+    }
+    form.dataset.leadTracked = "true";
+    trackLead();
+    return new Promise((resolve) => {
+      window.setTimeout(resolve, 300);
+    });
+  }
+
   function setSubmittingState(form, isSubmitting, label) {
     const submitButton = form.querySelector('button[type="submit"]');
     if (!submitButton) return;
@@ -120,12 +131,13 @@
         successMessage.classList.add("show");
         return;
       }
-      trackLead();
+      await fireLeadEventOnce(form);
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your message has been sent." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2200);
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
+      delete form.dataset.leadTracked;
       setSubmittingState(form, false);
     });
   }
@@ -222,13 +234,14 @@
         successMessage.classList.add("show");
         return;
       }
-      trackLead();
+      await fireLeadEventOnce(form);
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your creator details have been submitted." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2400);
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
       updatePlatformCards();
+      delete form.dataset.leadTracked;
       setSubmittingState(form, false);
     });
 
@@ -320,13 +333,14 @@
         successMessage.classList.add("show");
         return;
       }
-      trackLead();
+      await fireLeadEventOnce(form);
       successMessage.textContent = GOOGLE_SCRIPT_URL ? "Your business details have been submitted." : "Add your Google Script URL to save submissions to Sheets.";
       successMessage.classList.add("show");
       setTimeout(() => successMessage.classList.remove("show"), 2400);
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
       updateBusinessFields();
+      delete form.dataset.leadTracked;
       setSubmittingState(form, false);
     });
 
