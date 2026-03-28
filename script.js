@@ -41,6 +41,16 @@
     }
   }
 
+  function setSubmittingState(form, isSubmitting, label) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) return;
+    if (!submitButton.dataset.defaultLabel) {
+      submitButton.dataset.defaultLabel = submitButton.textContent;
+    }
+    submitButton.disabled = isSubmitting;
+    submitButton.textContent = isSubmitting ? (label || "Submission in process...") : submitButton.dataset.defaultLabel;
+  }
+
   function setupFadeIn() {
     const fadeItems = document.querySelectorAll(".fade-in");
     if (!fadeItems.length) return;
@@ -95,6 +105,7 @@
         form.querySelector(".field.error input, .field.error textarea")?.focus();
         return;
       }
+      setSubmittingState(form, true, "Submission in process...");
       const payload = {
         formType: "contact",
         submittedAt: new Date().toISOString(),
@@ -104,6 +115,7 @@
       };
       const submitResult = await submitToGoogleSheets(payload);
       if (!submitResult.ok && GOOGLE_SCRIPT_URL) {
+        setSubmittingState(form, false);
         successMessage.textContent = "Submission failed. Please try again.";
         successMessage.classList.add("show");
         return;
@@ -114,6 +126,7 @@
       setTimeout(() => successMessage.classList.remove("show"), 2200);
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
+      setSubmittingState(form, false);
     });
   }
 
@@ -182,6 +195,7 @@
         form.querySelector(".field.error input")?.focus();
         return;
       }
+      setSubmittingState(form, true, "Submission in process...");
       const payload = {
         formType: "creator",
         submittedAt: new Date().toISOString(),
@@ -203,6 +217,7 @@
       };
       const submitResult = await submitToGoogleSheets(payload);
       if (!submitResult.ok && GOOGLE_SCRIPT_URL) {
+        setSubmittingState(form, false);
         successMessage.textContent = "Submission failed. Please try again.";
         successMessage.classList.add("show");
         return;
@@ -214,6 +229,7 @@
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
       updatePlatformCards();
+      setSubmittingState(form, false);
     });
 
     updatePlatformCards();
@@ -282,6 +298,7 @@
         form.querySelector(".field.error input, .field.error select")?.focus();
         return;
       }
+      setSubmittingState(form, true, "Submission in process...");
       const payload = {
         formType: "business",
         submittedAt: new Date().toISOString(),
@@ -298,6 +315,7 @@
       };
       const submitResult = await submitToGoogleSheets(payload);
       if (!submitResult.ok && GOOGLE_SCRIPT_URL) {
+        setSubmittingState(form, false);
         successMessage.textContent = "Submission failed. Please try again.";
         successMessage.classList.add("show");
         return;
@@ -309,6 +327,7 @@
       form.reset();
       form.querySelectorAll(".field").forEach((field) => setFieldError(field, ""));
       updateBusinessFields();
+      setSubmittingState(form, false);
     });
 
     updateBusinessFields();
