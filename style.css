@@ -80,12 +80,22 @@ body.modal-open { overflow: hidden; }
 .floating-badge.left { top: 16%; left: 4%; transform: rotate(-8deg); }
 .floating-badge.right { top: 22%; right: 4%; transform: rotate(7deg); }
 .floating-badge.bottom { bottom: 18%; right: 10%; transform: rotate(-4deg); }
-.top-logo-wrap { width: min(100%, 520px); margin: 0 auto 0.35rem; display: flex; justify-content: center; }
+.top-logo-wrap {
+  width: min(100%, 520px);
+  height: 230px;
+  margin: 0 auto 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
 .top-logo-image, .logo {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
+  width: 360px;
+  max-width: none;
+  height: 230px;
   display: block;
+  object-fit: cover;
+  object-position: center top;
   filter: drop-shadow(0 20px 34px rgba(2, 8, 20, 0.32));
 }
 .tag {
@@ -260,7 +270,19 @@ h1 { font-size: clamp(2.35rem, 6vw, 4.2rem); letter-spacing: -0.04em; }
   .big-button, .nav-button { width: 100%; min-width: 0; }
   .checkbox-grid, .about-visual { grid-template-columns: 1fr; }
   .contact-card, .final-card, .page-wrap { padding: 0.9rem; }
-  .top-logo-wrap { width: min(100%, 360px); margin-bottom: 0.7rem; }
+  .top-logo-wrap {
+    width: min(100%, 320px);
+    height: 170px;
+    margin-bottom: 0.15rem;
+    align-items: flex-start;
+  }
+  .top-logo-image {
+    width: 260px;
+    max-width: none;
+    height: 170px;
+    object-fit: cover;
+    object-position: center top;
+  }
   .floating-badge { font-size: 0.72rem; padding: 0.45rem 0.65rem; }
   .floating-badge.left { top: 10%; left: -2px; }
   .floating-badge.right { top: 18%; right: -2px; }
